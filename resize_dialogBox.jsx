@@ -2,7 +2,6 @@
 app.bringToFront();
 
 var ScaleMethod = 2; //percent or pixels
-var ScalePercent;
 var ScaleDimension = new Array();
 var OperatedHeight = 0;
 var OperatedWidth = 0;
@@ -143,10 +142,10 @@ function ResizeFilePixel (inputFile){
     if(ScaleDimension.length > 1)
     {
         app.activeDocument.resizeImage(ScaleDimension[0], ScaleDimension[1]);
-        //app.activeDocument.close(SaveOptions.SAVECHANGES);
+        app.activeDocument.close(SaveOptions.SAVECHANGES);
     }else{
         app.activeDocument.resizeImage(ScaleDimension[0]);
-        //app.activeDocument.close(SaveOptions.SAVECHANGES);
+        app.activeDocument.close(SaveOptions.SAVECHANGES);
     }
 }
 
@@ -158,122 +157,11 @@ function ResizeFilePercent (inputFile){
                 alert ("rururru");
 alert ('width = ' + docWidth + OperatedWidth + ', height = ' + docHeight + OperatedHeight);
         app.activeDocument.resizeImage(docWidth * OperatedWidth, docHeight * OperatedHeight);
-        //app.activeDocument.close(SaveOptions.SAVECHANGES);
+        app.activeDocument.close(SaveOptions.SAVECHANGES);
     }else{
         alert ('width = ' + docWidth + OperatedWidth);
         app.activeDocument.resizeImage(docWidth * OperatedWidth);
         alert ("tutut");
-        //app.activeDocument.close(SaveOptions.SAVECHANGES);
+        app.activeDocument.close(SaveOptions.SAVECHANGES);
     }
 }
-
-/*
-function main()
-{
-    var win = new Window('dialog', 'Resize Files');
-    win.alignChildren = ["fill", "left"];
-    var UIcolumnWidth = [0, 0, 70, 20];
-    var InputTextTitles = win.add("group");
-    InputTextTitles.orientation = "row";
-    InputTextTitles.add ("statictext", UIcolumnWidth, "width");
-    InputTextTitles.add ("statictext", UIcolumnWidth, "height");
-    var InputText = win.add("group");
-    InputText.orientation = "row";
-    InputText.spacing = 8;
-    var KeepProportion = InputText.add ("checkbox", undefined, "keep proportions?");
-    var newWidth = InputText.add ("edittext", [0, 0, 50, 20], "100");
-    newWidth.active = true;
-    var InputGap = InputText.add ("statictext",undefined, "x");
-    var newHeight = InputText.add ("edittext", [0, 0, 50, 20], "99");
-    var dropdownAlign = InputText.add("dropdownList", [20, 0, 50, 20], ["px","%"]);
-    dropdownAlign.selection = 0;
-    dropdownAlign.size = [50, 25];
-    var ButtonsGroups = win.add("group");
-    ButtonsGroups.spacing = 10;
-    ButtonsGroups.margins = 15;
-    ButtonsGroups.alignChildren = ["fill", "center"];
-    var Cancel = ButtonsGroups.add("button", undefined, "Cancel");
-    var SelectButton = ButtonsGroups.add("button", undefined, "Select Folder");
-
-KeepProportion.onClick = function () {
-    if (!newHeight.visible){
-        newHeight.visible = true;
-        InputGap.visible = true;
-    }else{
-        newHeight.visible = false;
-        InputGap.visible = false;
-    }
-}
-
-dropdownAlign.onChange = function ()
-    {
-        if (dropdownAlign.selection.text == "px"){
-            ScaleMethod = 1;
-        }else if (dropdownAlign.selection.text == "%"){
-            ScaleMethod = 2;
-        }
-    }
-
-SelectButton.onClick = function ()
-    {
-        var ScaleType = dropdownAlign.selection.text;
-        var inputFolder = Folder.selectDialog("Select a folder to resize");
-        win.close();
-        resize(inputFolder);
-   };
-
-Cancel.onClick = function ()
-    {
-        return win.close();
-    }
-win.show();
-}
-*/
-
-
-/*
-
-
-function resizer(samplesFolder)
-{
-    var fileList = samplesFolder.getFiles();
-
-    for (var i = 0; i < fileList.length; i++) 
-    {
-        var file = fileList[i];
-        if (file.name.charAt(0) != '.') 
-        {            
-            if(file instanceof File && file.hidden == false)
-            {
-              if(file.name.match(/\.(psd|png|jpg|jpeg|gif)$/))
-              {
-                app.activeDocument = open(file);
-                alert (ScaleType + "+ 3333");
-                //var docWidth = app.activeDocument.width;
-                    /* if(ScaleType == "px")
-                    {
-                    alert ('11111');
-                    app.activeDocument.resizeImage(newWidth, newHeight);
-                    app.activeDocument.close(SaveOptions.SAVECHANGES);
-                    }
-                    else
-                    {
-                    app.activeDocument.resizeImage(newWidth, newHeight);
-                    app.activeDocument.close(SaveOptions.SAVECHANGES);
-                    alert ('2222222');
-
-                    // app.activeDocument.resizeImage(docWidth * ScalePercent);
-                    // app.activeDocument.close(SaveOptions.SAVECHANGES);
-                } 
-              }				      
-            }
-            else
-            {
-                i++;
-           	  resizer(file);
-            }    
-        }
-    }
-}
-*/
-
