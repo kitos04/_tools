@@ -1,7 +1,7 @@
 #target photoshop
 app.bringToFront();
 
-var ScaleMethod = '%'; //percent or pixels
+var ScaleMethod = '%';
 var ScaleDimension = new Array();
 var OperatedHeight = 0;
 var OperatedWidth = 0;
@@ -97,12 +97,12 @@ function main() {
 }
 
 function resize(samplesFolder) {
-    OperatedWidth = OperatedWidth/100;
-    OperatedHeight = OperatedHeight/100;
     var fileList = samplesFolder.getFiles();
     if (!fileList.length) {
         alert("No files in folder - " + samplesFolder)
     } else {
+        OperatedWidth = OperatedWidth/100;
+        OperatedHeight = OperatedHeight/100;
         for (var i = 0; i < fileList.length; i++) {
             var file = fileList[i];
             if (file instanceof Folder) {
@@ -147,5 +147,3 @@ function ResizeFilePercent(inputFile) {
         app.activeDocument.close(SaveOptions.SAVECHANGES);
     }
 }
-
-//пустая папка и % — трха
