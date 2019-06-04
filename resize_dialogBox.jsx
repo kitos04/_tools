@@ -97,8 +97,8 @@ function main() {
 }
 
 function resize(samplesFolder) {
-    OperatedWidth = OperatedWidth / 100;
-    OperatedHeight = OperatedHeight / 100;
+    OperatedWidth = OperatedWidth/100;
+    OperatedHeight = OperatedHeight/100;
     var fileList = samplesFolder.getFiles();
     if (!fileList.length) {
         alert("No files in folder - " + samplesFolder)
@@ -147,3 +147,5 @@ function ResizeFilePercent(inputFile) {
         app.activeDocument.close(SaveOptions.SAVECHANGES);
     }
 }
+
+//пустая папка и % — трха
